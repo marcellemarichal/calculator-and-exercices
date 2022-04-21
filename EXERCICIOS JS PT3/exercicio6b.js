@@ -42,28 +42,22 @@ const people = [ {
 
 function findAverageAndHighestSalary(peopleInformation) {
 
-    let averageSalary = 0
+    let i = 0;
     let averageChildren = 0
+    let averageSalary = 0
     let highestSalary = 0
 
-    for (let i = 0; i <= peopleInformation.length; i++) {
-
-    const salary = peopleInformation[i].salary
-    const children = peopleInformation[i].children
-
-    if (salary > highestSalary) highestSalary = salary
-
-    if (salary < 0) {
-        console.log(`Média de salário: R$${(averageSalary / i).toFixed(0)}`)
-        console.log(`Média de filhos: ${(averageChildren / i).toFixed(0)}`)
-        console.log(`Maior salário: R$${highestSalary}`)
-        break
-    } else {
-        averageSalary = averageSalary + salary;
-        averageChildren += children
+    while (peopleInformation[i].salary > 0) {
+        averageSalary += peopleInformation[i].salary
+        averageChildren += peopleInformation[i].children
+        peopleInformation[i].salary > highestSalary ? highestSalary = peopleInformation[i].salary : highestSalary = highestSalary
+        i++
     }
-    
-    }
+
+    console.log(`Média de salário: R$${(averageSalary / i).toFixed(0)}`)
+    console.log(`Média de filhos: ${(averageChildren / i).toFixed(0)}`)
+    console.log(`Maior salário: R$${highestSalary}`) 
+
 }
 
 findAverageAndHighestSalary(people)
